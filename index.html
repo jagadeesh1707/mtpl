@@ -142,15 +142,17 @@
           this.el.addEventListener('targetLost', event => {
             
             console.log("target lost");
-            if(status === true && paintandquestPreviewButton.getAttribute("visible", true)){
-              paintandquestPreviewButton.setAttribute("visible", false);
-            }
+            // if(status === true && paintandquestPreviewButton.getAttribute("visible", true)){
+            //   paintandquestPreviewButton.setAttribute("visible", false);
+            // }
               if (status === true) {
                 document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-mp4");
                 document.querySelector("#mtpl-video-mp4").pause();
+                paintandquestPreviewButton.setAttribute("visible", false);
               } else {
                 document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-webm");
                 document.querySelector("#mtpl-video-webm").pause();
+                paintandquestPreviewButton.setAttribute("visible", false);
               }
               status = false;
           });
