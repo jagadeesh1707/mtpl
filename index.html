@@ -121,9 +121,7 @@
           // On Target Found
           this.el.addEventListener('targetFound', event => {
             console.log("target found");
-            if(paintandquestPreviewButton.getAttribute("visible", true)){
-              paintandquestPreviewButton.getAttribute("visible", false);
-            }
+            
             if (status === false) {
               document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-mp4");
               document.querySelector("#mtpl-video-mp4").play();
@@ -144,6 +142,9 @@
           this.el.addEventListener('targetLost', event => {
             
             console.log("target lost");
+            if(status === true && paintandquestPreviewButton.getAttribute("visible", true)){
+              paintandquestPreviewButton.setAttribute("visible", false);
+            }
               if (status === true) {
                 document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-mp4");
                 document.querySelector("#mtpl-video-mp4").pause();
