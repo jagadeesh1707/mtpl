@@ -17,15 +17,26 @@
     </script>
 
     <script>
-      
-      const showInfo = (done) => {
-        const cta = document.querySelector("#cta-panel");
+        //const cta = document.querySelector("#cta-panel");
+        //const downloadButton = document.querySelector("#download-button");
+
+        //const portfolio = document.querySelector("#portfolio-panel");
+        // const paintandquestVideoMp4 = document.querySelector("#mtpl-video-mp4");
+        const paintandquestPreviewButton = document.querySelector("#paintandquest-preview-button");
+        const paintandquestVideoWebm = document.querySelector("#mtpl-video-webm");
+        const paintandquestVideoLink = document.querySelector("#paintandquest-video-link");
+
+        const testVideo = document.createElement( "video" );
+        const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, opus"' );
+        
+      var showInfo = () => {
         const downloadButton = document.querySelector("#download-button");
+        const cta = document.querySelector("#cta-panel");
 
         const showCtaItem = (item) => {
             document.querySelector("#cta-item" + item).setAttribute("visible", 0 === item);
         }
-
+        
         showCtaItem(0)
 
         setTimeout(() => { // Delay the animation
@@ -40,16 +51,16 @@
           window.location.href="https://monolith.asia";
         });
 
-        setTimeout(() => {
-          done();
-        }, 500);         
+        // setTimeout(() => {
+        //   done();
+        // }, 500);         
       }
 
-      const showPortfolio = (done) => {
+      const showPortfolio = () => {
         const portfolio = document.querySelector("#portfolio-panel");
         const paintandquestPreviewButton = document.querySelector("#paintandquest-preview-button");
-        const paintandquestVideoMp4 = document.querySelector("#mtpl-video-mp4");
         const paintandquestVideoWebm = document.querySelector("#mtpl-video-webm");
+        const paintandquestVideoLink = document.querySelector("#paintandquest-video-link");
 
         const showPortfolioItem = (item) => {
           document.querySelector("#portfolio-item" + item).setAttribute("visible", 0 === item);
@@ -66,18 +77,25 @@
         }, 250); // Delay of 250 milliseconds
 
         if (portfolio.getAttribute("visible", true)) {
-          document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-webm");
-          document.querySelector("#mtpl-video-webm").play();
-          document.querySelector("#mtpl-video-webm").pause();
+          // document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-webm");
+          // document.querySelector("#mtpl-video-webm").play();
+          // document.querySelector("#mtpl-video-webm").pause();
+
+          paintandquestVideoLink.getAttribute("src", "#mtpl-video-webm");
+          paintandquestVideoWebm.play();
+          paintandquestVideoWebm.pause();
         }
 
         paintandquestPreviewButton.addEventListener('click', () => {
           if(paintandquestPreviewButton.getAttribute("visible", true)) {
             paintandquestPreviewButton.setAttribute("visible", false);
-            const testVideo = document.createElement( "video" );
-            const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, opus"' );
-            document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-webm");
-            document.querySelector("#mtpl-video-webm").play();
+
+            if (canplayWebm === "probably" || canplayWebm === "maybe") {
+              paintandquestVideoLink.setAttribute("src", "#mtpl-video-webm");
+              paintandquestVideoWebm.play();
+            }
+            //const testVideo = document.createElement( "video" );
+            //const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, opus"' );
             // if (canplayWebm == "") {
             //   document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-mp4");
             //   document.querySelector("#mtpl-video-mp4").play();
@@ -87,10 +105,13 @@
             // }
           } else {
             paintandquestPreviewButton.setAttribute("visible", true);
-            const testVideo = document.createElement( "video" );
-            const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, opus"' );
-            document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-webm");
-            document.querySelector("#mtpl-video-webm").pause();
+
+            if (canplayWebm === "probably" || canplayWebm === "maybe") {
+              paintandquestVideoLink.setAttribute("src", "#mtpl-video-webm");
+              paintandquestVideoWebm.pause();
+            }
+            //const testVideo = document.createElement( "video" );
+            //const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, opus"' );
               // if (canplayWebm == "") {
               //   document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-mp4");
               //   document.querySelector("#mtpl-video-mp4").pause();
@@ -102,14 +123,14 @@
         });
 
 
-        setTimeout(() => {
-          done();
-        }, 500);
+        // setTimeout(() => {
+        //   done();
+        // }, 500);
       }
 
       var status = true;
       
-      const paintandquestPreviewButton = document.querySelector("#paintandquest-preview-button");
+      //const paintandquestPreviewButton = document.querySelector("#paintandquest-preview-button");
 
       // AR Config
       AFRAME.registerComponent('mytarget', {
@@ -122,8 +143,8 @@
             console.log("target found");
             
             if (status === false) {
-              document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-webm");
-              document.querySelector("#mtpl-video-webm").play();
+              paintandquestVideoLink.getAttribute("src", "#mtpl-video-webm");
+              paintandquestVideoWebm.play();
               status = true;
             }
 
@@ -144,8 +165,8 @@
               paintandquestPreviewButton.setAttribute("visible", false);
             }
               if (status === true) {
-                document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-webm");
-                document.querySelector("#mtpl-video-webm").pause();
+                paintandquestVideoLink.getAttribute("src", "#mtpl-video-webm");
+                paintandquestVideoWebm.pause();
                 status = false;
               }
               
