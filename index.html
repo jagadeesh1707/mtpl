@@ -109,17 +109,21 @@
       }
 
       var status = true;
+      
+      const paintandquestPreviewButton = document.querySelector("#paintandquest-preview-button");
 
       // AR Config
       AFRAME.registerComponent('mytarget', {
-
+        
         
         init: function () {
 
           // On Target Found
           this.el.addEventListener('targetFound', event => {
             console.log("target found");
-
+            if(paintandquestPreviewButton.getAttribute("visible", true)){
+              paintandquestPreviewButton.getAttribute("visible", false);
+            }
             if (status === false) {
               document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-mp4");
               document.querySelector("#mtpl-video-mp4").play();
