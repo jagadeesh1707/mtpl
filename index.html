@@ -126,7 +126,7 @@
         // }, 500);
       }
 
-      var status = true;
+      
       
       //const paintandquestPreviewButton = document.querySelector("#paintandquest-preview-button");
 
@@ -135,6 +135,7 @@
         
         
         init: function () {
+          var status = true;
           const paintandquestPreviewButton = document.querySelector("#paintandquest-preview-button");
           const paintandquestVideoWebm = document.querySelector("#mtpl-video-webm");
           const paintandquestVideoLink = document.querySelector("#paintandquest-video-link");
@@ -142,8 +143,9 @@
           // On Target Found
           this.el.addEventListener('targetFound', event => {
             console.log("target found");
-            
+            console.log(status);
             if (status === false) {
+              paintandquestPreviewButton.setAttribute("visible", false);
               paintandquestVideoLink.getAttribute("src", "#mtpl-video-webm");
               paintandquestVideoWebm.play();
               status = true;
@@ -162,14 +164,16 @@
           this.el.addEventListener('targetLost', event => {
             
             console.log("target lost");
-            if(status === true && paintandquestPreviewButton.getAttribute("visible", true)){
+            console.log(status);
+            // if(status === true && paintandquestPreviewButton.getAttribute("visible", true)){
+            //   paintandquestPreviewButton.setAttribute("visible", false);
+            // }
+            if (status === true) {
               paintandquestPreviewButton.setAttribute("visible", false);
+              paintandquestVideoLink.getAttribute("src", "#mtpl-video-webm");
+              paintandquestVideoWebm.pause();
+              status = false;
             }
-              if (status === true) {
-                paintandquestVideoLink.getAttribute("src", "#mtpl-video-webm");
-                paintandquestVideoWebm.pause();
-                status = false;
-              }
               
           });
         }
