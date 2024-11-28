@@ -66,11 +66,6 @@
         }, 250); // Delay of 250 milliseconds
 
         if (portfolio.getAttribute("visible", true)) {
-          document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-mp4");
-          document.querySelector("#mtpl-video-mp4").play();
-          document.querySelector("#mtpl-video-mp4").pause();
-
-        } else {
           document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-webm");
           document.querySelector("#mtpl-video-webm").play();
           document.querySelector("#mtpl-video-webm").pause();
@@ -81,24 +76,28 @@
             paintandquestPreviewButton.setAttribute("visible", false);
             const testVideo = document.createElement( "video" );
             const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, opus"' );
-            if (canplayWebm == "") {
-              document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-mp4");
-              document.querySelector("#mtpl-video-mp4").play();
-            } else {
-              document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-webm");
-              document.querySelector("#mtpl-video-webm").play();
-            }
+            document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-webm");
+            document.querySelector("#mtpl-video-webm").play();
+            // if (canplayWebm == "") {
+            //   document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-mp4");
+            //   document.querySelector("#mtpl-video-mp4").play();
+            // } else {
+            //   document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-webm");
+            //   document.querySelector("#mtpl-video-webm").play();
+            // }
           } else {
             paintandquestPreviewButton.setAttribute("visible", true);
             const testVideo = document.createElement( "video" );
             const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, opus"' );
-              if (canplayWebm == "") {
-                document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-mp4");
-                document.querySelector("#mtpl-video-mp4").pause();
-              } else {
-                document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-webm");
-                document.querySelector("#mtpl-video-webm").pause();
-              }
+            document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-webm");
+            document.querySelector("#mtpl-video-webm").pause();
+              // if (canplayWebm == "") {
+              //   document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-mp4");
+              //   document.querySelector("#mtpl-video-mp4").pause();
+              // } else {
+              //   document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-webm");
+              //   document.querySelector("#mtpl-video-webm").pause();
+              // }
           }
         });
 
@@ -123,13 +122,12 @@
             console.log("target found");
             
             if (status === false) {
-              document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-mp4");
-              document.querySelector("#mtpl-video-mp4").play();
-            } else {
               document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-webm");
               document.querySelector("#mtpl-video-webm").play();
+              status = true;
             }
-            status = true;
+
+            
             showInfo();
             showPortfolio(() => {
               setTimeout(() => {
@@ -146,13 +144,11 @@
               paintandquestPreviewButton.setAttribute("visible", false);
             }
               if (status === true) {
-                document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-mp4");
-                document.querySelector("#mtpl-video-mp4").pause();
-              } else {
                 document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-webm");
                 document.querySelector("#mtpl-video-webm").pause();
+                status = false;
               }
-              status = false;
+              
           });
         }
       });
