@@ -80,7 +80,7 @@
           if(paintandquestPreviewButton.getAttribute("visible", true)) {
             paintandquestPreviewButton.setAttribute("visible", false);
             const testVideo = document.createElement( "video" );
-            const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp9, vorbis"' );
+            const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, vorbis"' );
             if (canplayWebm == "") {
               document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-mp4");
               document.querySelector("#mtpl-video-mp4").play();
@@ -91,7 +91,7 @@
           } else {
             paintandquestPreviewButton.setAttribute("visible", true);
             const testVideo = document.createElement( "video" );
-            const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp9, vorbis"' );
+            const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, vorbis"' );
               if (canplayWebm == "") {
                 document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-mp4");
                 document.querySelector("#mtpl-video-mp4").pause();
