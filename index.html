@@ -22,9 +22,7 @@
 
         //const portfolio = document.querySelector("#portfolio-panel");
         // const paintandquestVideoMp4 = document.querySelector("#mtpl-video-mp4");
-        const paintandquestPreviewButton = document.querySelector("#paintandquest-preview-button");
-        const paintandquestVideoWebm = document.querySelector("#mtpl-video-webm");
-        const paintandquestVideoLink = document.querySelector("#paintandquest-video-link");
+        
 
         const testVideo = document.createElement( "video" );
         const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, opus"' );
@@ -137,7 +135,10 @@
         
         
         init: function () {
-
+          const paintandquestPreviewButton = document.querySelector("#paintandquest-preview-button");
+          const paintandquestVideoWebm = document.querySelector("#mtpl-video-webm");
+          const paintandquestVideoLink = document.querySelector("#paintandquest-video-link");
+          
           // On Target Found
           this.el.addEventListener('targetFound', event => {
             console.log("target found");
