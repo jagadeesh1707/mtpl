@@ -229,6 +229,19 @@
 	0%, 100% { top: 0% }
 	50% { top: calc(100% - 10px) }
       }
+
+      /* CSS for positioning the image */
+    #right-bottom-footer {
+      position: absolute;
+      bottom: 30px; /* Adjust distance from the bottom */
+      right: 30px; /* Adjust distance from the right */
+      z-index: 10; /* Ensure it stays above the AR scene */
+    }
+
+    #right-bottom-footer img {
+      max-width: 300px; /* Limit the image size */
+      height: auto;
+    }
     </style>
   </head>
   <body>
@@ -250,6 +263,7 @@
           <img id="card" src="target\mtpl.jpg" />
           <img id="icon-play" src="img\play.png" />
           <img id="icon-download" src="img\download.png" />
+          <img id="icon-logo" src="img\logo.png" />
           <video id="mtpl-video-mp4" autoplay="false" loop="true" src="video/showreel.mp4"></video>
           <video id="mtpl-video-webm" autoplay="false" loop="true" src="video/showreel.webm"></video>
           
@@ -286,6 +300,9 @@
 
         </a-entity>
       </a-scene>
+    </div>
+    <div id="right-bottom-footer">
+      <img src="img\logo.png" alt="Footer">
     </div>
   </body>
 </html>
