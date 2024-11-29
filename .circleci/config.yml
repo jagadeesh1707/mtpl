@@ -22,6 +22,9 @@ jobs:
           name: "Compress"
           command: "zip -r /home/circleci/project/build.zip ./"
       - run:
+          name: "APT Update"
+          command: "sudo apt-get update && sudo apt-get install -y cowsay"
+      - run:
           name: "Install sshpass"
           command: "sudo apt install sshpass"
       - run:
