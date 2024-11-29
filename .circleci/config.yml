@@ -29,7 +29,7 @@ jobs:
           command: "sudo apt install sshpass"
       - run:
           name: "Copy Build to Server"
-          command: "sshpass -p 'aVgc12345J' scp -oStrictHostKeyChecking=no -r build.zip root@157.245.107.141:/var/www/html/"
+          command: "sshpass -p $roopass scp -oStrictHostKeyChecking=no -r build.zip root@157.245.107.141:/var/www/html/"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
