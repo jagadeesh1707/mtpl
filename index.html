@@ -17,13 +17,6 @@
     </script>
 
     <script>
-        //const cta = document.querySelector("#cta-panel");
-        //const downloadButton = document.querySelector("#download-button");
-
-        //const portfolio = document.querySelector("#portfolio-panel");
-        // const paintandquestVideoMp4 = document.querySelector("#mtpl-video-mp4");
-        
-
         const testVideo = document.createElement( "video" );
         const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, opus"' );
         
@@ -75,10 +68,6 @@
         }, 250); // Delay of 250 milliseconds
 
         if (portfolio.getAttribute("visible", true)) {
-          // document.querySelector("#paintandquest-video-link").getAttribute("src", "#mtpl-video-webm");
-          // document.querySelector("#mtpl-video-webm").play();
-          // document.querySelector("#mtpl-video-webm").pause();
-
           paintandquestVideoLink.getAttribute("src");
           paintandquestVideoWebm.play();
           paintandquestVideoWebm.pause();
@@ -92,15 +81,6 @@
               paintandquestVideoLink.setAttribute("src", "#mtpl-video-webm");
               paintandquestVideoWebm.play();
             }
-            //const testVideo = document.createElement( "video" );
-            //const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, opus"' );
-            // if (canplayWebm == "") {
-            //   document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-mp4");
-            //   document.querySelector("#mtpl-video-mp4").play();
-            // } else {
-            //   document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-webm");
-            //   document.querySelector("#mtpl-video-webm").play();
-            // }
           } else {
             paintandquestPreviewButton.setAttribute("visible", true);
 
@@ -108,15 +88,6 @@
               paintandquestVideoLink.setAttribute("src", "#mtpl-video-webm");
               paintandquestVideoWebm.pause();
             }
-            //const testVideo = document.createElement( "video" );
-            //const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, opus"' );
-              // if (canplayWebm == "") {
-              //   document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-mp4");
-              //   document.querySelector("#mtpl-video-mp4").pause();
-              // } else {
-              //   document.querySelector("#paintandquest-video-link").setAttribute("src", "#mtpl-video-webm");
-              //   document.querySelector("#mtpl-video-webm").pause();
-              // }
           }
         });
 
@@ -126,13 +97,8 @@
         // }, 500);
       }
 
-      
-      
-      //const paintandquestPreviewButton = document.querySelector("#paintandquest-preview-button");
-
       // AR Config
       AFRAME.registerComponent('mytarget', {
-        
         
         init: function () {
           var status = true;
@@ -147,16 +113,14 @@
             console.log("target found");
             
             if (status === false) {
-              //paintandquestVideoWebm.play();
+
               console.log(status);
-              // paintandquestPreviewButton.setAttribute("visible", false);
+
               if(paintandquestPreviewButton.setAttribute("visible") === false){
                 paintandquestVideoWebm.pause();
                 paintandquestPreviewButton.setAttribute("visible", true)
               }
-              //paintandquestVideoLink.getAttribute("src");
               console.log(paintandquestVideoWebm);
-              //paintandquestVideoWebm.play();
               
               status = true;
             }
@@ -174,15 +138,9 @@
           this.el.addEventListener('targetLost', event => {
             
             console.log("target lost");
-            
-            //console.log(status);
-            // if(status === true && paintandquestPreviewButton.getAttribute("visible", true)){
-            //   paintandquestPreviewButton.setAttribute("visible", false);
-            // }
+        
             if (status === true) {
-              //console.log(paintandquestPreviewButton)
               paintandquestPreviewButton.setAttribute("visible", true);
-              //paintandquestVideoLink.getAttribute("src");
               paintandquestVideoWebm.pause();
               
               status = false;
@@ -304,7 +262,6 @@
           <img id="icon-play" src="img\play.png" />
           <img id="icon-download" src="img\download.png" />
           <img id="icon-logo" src="img\logo.png" />
-          <video id="mtpl-video-mp4" autoplay="false" loop="true" src="video/showreel.mp4"></video>
           <video id="mtpl-video-webm" autoplay="false" loop="true" src="video/showreel.webm"></video>
           
         </a-assets>
