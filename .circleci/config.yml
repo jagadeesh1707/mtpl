@@ -22,8 +22,8 @@ jobs:
           name: "Compress"
           command: "zip -r /home/circleci/project/build.zip ./"
       - run:
-          name: "Echo"    
-          command: "ls"
+          name: "Copy Build to Server"    
+          command: "scp -oStrictHostKeyChecking=no -v -i ~/.ssh/circleci -r build.zip"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
