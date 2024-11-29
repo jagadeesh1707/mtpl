@@ -32,7 +32,7 @@ jobs:
           command: sshpass -p "$ROOT_PASS" scp -oStrictHostKeyChecking=no -r build.zip root@157.245.107.141:/var/www/html/
       - run:
           name: "Decompress"
-          command: sshpass -p "$ROOT_PASS" ssh root@157.245.107.141 "cd ..; cd /var/www/html; unzip build.zip"
+          command: sshpass -p "$ROOT_PASS" ssh root@157.245.107.141 "cd ..; cd /var/www/html; unzip -o build.zip"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
