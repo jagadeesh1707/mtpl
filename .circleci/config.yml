@@ -20,6 +20,7 @@ jobs:
       - checkout
       - run:
           name: "Compress"
+          command: "zip -r /home/circleci/project/build.zip ./"
           command: "ls"
 
 # Orchestrate jobs using workflows
