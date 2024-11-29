@@ -23,13 +23,13 @@ jobs:
           command: "zip -r /home/circleci/project/build.zip ./"
       - run:
           name: "APT Update"
-          command: "sudo apt-get update && sudo apt-get install -y cowsay"
+          command: sudo apt-get update && sudo apt-get install -y cowsay
       - run:
           name: "Install sshpass"
-          command: "sudo apt install sshpass"
+          command: sudo apt install sshpass
       - run:
           name: "Copy Build to Server"
-          command: "sshpass -p '$ROOT_PASS' scp -oStrictHostKeyChecking=no -r build.zip root@157.245.107.141:/var/www/html/"
+          command: sshpass -p "$ROOT_PASS" scp -oStrictHostKeyChecking=no -r build.zip root@157.245.107.141:/var/www/html/
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
